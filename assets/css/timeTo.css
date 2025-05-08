@@ -11,11 +11,10 @@ figure, figcaption {
 }
 
 .timeTo {
-	font-family: Tahoma, Verdana, Aial, sans-serif;
-	font-size: 22px;
-	line-height: 128%;
-	font-weight: bold;
-	height: 22px;
+font-size: 10px;
+line-height: 250%;
+font-weight: bold;
+height: 10px;
 }
 
 .timeTo span {
@@ -83,8 +82,8 @@ figure, figcaption {
 .timeTo div {
 	position: relative;
 	display: inline-block;
-	width: 25px;
-	height: 30px;
+	width: 15px;
+	height: 15px;
 	border-top: 1px solid silver;
 	border-right: 1px solid silver;
 	border-bottom: 1px solid silver;
