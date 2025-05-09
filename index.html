@@ -225,22 +225,27 @@ Maka, laksanakanlah salat karena Tuhanmu dan berkurbanlah!
 </section>
 						
 <section class="docs-section" id="bagan">
-<div class="simplelightbox-gallery row mb-0">
-<div class="col-12 col-md-10 mb-0">
-<a href="assets/images/dok/struktur-n.png"><img class="figure-img img-fluid rounded" src="assets/images/dok/struktur.png" alt="" title=""/></a>
+<div class="col-12 mb-0">
+<img class="figure-img img-fluid rounded" src="assets/images/dok/struktur.png" alt="" title=""/>
 </div>
-<div class="col-12 col-md-2 mb-0">
-<p><i class="fas fa-external-link-alt"></i> <a class="theme-link" href="https://localhost/an-nashir/doc/struktur.png" target="_blank"><code>PDF</code></a>.</p>
-</div><!--//col-->
 <!--//col-->
-</div><!--//gallery-->
 </section>
 
 <section class="docs-section" id="nama">
-<div class="col-12 mb-3 mt-0">
-<pre id="nama">
+<div class="col-12 mb-0 mt-0">
+<p>
+<button class="btn-primary" onclick="generatePdf()">Save PDF</button>
+</p>
+</div>
+<div id="doc-target" class="col-12 mb-3 mt-0">
+<img width="65%" src="assets/images/dok/struktur.png" alt="" title=""/>
+<pre>
+PEMBINA: 1. IWAN A2/08
+         2. Firman B2/33
+         3. ABDUL SOMAD B5/14
+
 PENASEHAT: 1. KARMIDIN
-           2. DEDE SHOLEH
+	   2. DEDE SHOLEH
            3. GATOT
          
 1. KETUA: ABDUL HALIM
@@ -442,6 +447,44 @@ versibeta: <span style="color: #fb866a;">beni</span>.website
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
     <script src="assets/js/docs.js"></script> 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" 
+integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" 
+crossorigin="anonymous" 
+referrerpolicy="no-referrer">
+</script>
+
+    <script>
+
+        // https://html2canvas.hertzen.com/configuration
+        // https://rawgit.com/MrRio/jsPDF/master/docs/module-html.html#~html
+        // https://artskydj.github.io/jsPDF/docs/jsPDF.html
+        window.jsPDF = window.jspdf.jsPDF;
+        function generatePdf() {
+            let jsPdf = new jsPDF('p', 'pt', 'a4');
+            var htmlElement = document.getElementById('doc-target');
+            // you need to load html2canvas (and dompurify if you pass a string to html)
+            const opt = {
+                callback: function (jsPdf) {
+                    jsPdf.save("Eid-1446H.pdf");
+                    // to open the generated PDF in browser window
+                    // window.open(jsPdf.output('bloburl'));
+                },
+                margin: [72, 72, 72, 72],
+                autoPaging: 'text',
+                html2canvas: {
+                    allowTaint: true,
+                    dpi: 300,
+                    letterRendering: true,
+                    logging: false,
+                    scale: .8
+                }
+            };
+
+            jsPdf.html(htmlElement, opt);
+        }
+    </script>
 
 
 <script src="assets/js/jquery.time-to.js"></script>
